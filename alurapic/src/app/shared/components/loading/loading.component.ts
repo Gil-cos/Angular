@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { LoadingService } from "./loading.service";
 import { Observable } from "rxjs";
-import { LoadingType } from "./loading-type";
 import { map } from "rxjs/operators";
+import { LoadingService } from "./loading.service";
 
 @Component({
     selector: 'ap-loading',
