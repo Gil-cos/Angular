@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { AlertService } from './alert.service';
-import { Alert, AlertType } from './alert';
+import { Component } from "@angular/core";
+import { Input } from "@angular/core";
+import { AlertService } from "./alert.service";
+import { Alert, AlertType } from "./alert";
+
 
 @Component({
     selector: 'ap-alert',
@@ -9,16 +11,14 @@ import { Alert, AlertType } from './alert';
 export class AlertComponent {
 
     @Input() timeout = 3000;
-
     alerts: Alert[] = [];
 
-    constructor(
-        private alertService: AlertService
-    ) {
-        this.alertService
+    constructor(private AlertService: AlertService) {
+
+        this.AlertService
             .getAlert()
             .subscribe(alert => {
-                if (!alert) {
+                if(!alert) {
                     this.alerts = [];
                     return;
                 }
@@ -33,19 +33,16 @@ export class AlertComponent {
 
     getAlertClass(alert: Alert) {
 
-        if (!alert) return '';
+        if(!alert) return '';
 
         switch (alert.alertType) {
 
             case AlertType.DANGER:
                 return 'alert alert-danger';
-
-            case AlertType.SUCCESS:
-                return 'alert alert-success';
-
             case AlertType.INFO:
                 return 'alert alert-info';
-
+            case AlertType.SUCCESS:
+                return 'alert alert-success';
             case AlertType.WARNING:
                 return 'alert alert-warning';
         }
